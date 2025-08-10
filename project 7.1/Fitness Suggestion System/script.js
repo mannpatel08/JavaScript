@@ -1,4 +1,4 @@
-// Fitness Suggestion System
+// clearcl
 // Covers: Variables, Data Types, prompt(), alert(), if-else, Comparison & Logical Operators, String validation
 
 // Variables to store inputs
@@ -8,9 +8,11 @@ let weightInput = prompt("Enter your weight (kg):");
 // Validation: check if inputs are numbers and not empty
 if (ageInput === "" || weightInput === "") {
     alert("Age and Weight cannot be empty.");
-} else if (isNaN(ageInput) || isNaN(weightInput)) {
+} 
+else if (isNaN(ageInput) || isNaN(weightInput)) {
     alert("Please enter valid numbers for Age and Weight.");
-} else {
+} 
+else {
     // Convert to proper data types
     let age = parseInt(ageInput, 10);
     let weight = parseFloat(weightInput);
