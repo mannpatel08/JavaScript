@@ -15,7 +15,7 @@ let lowestPrice = 0;
 let firstItem = true; // for lowest price calculation
 
 do {
-    choice = parseInt(console.log(
+    choice = parseInt(prompt(
         "=== Smart Café Billing System ===\n" +
         "1. Place Order\n" +
         "2. View Bill\n" +
@@ -29,7 +29,7 @@ do {
     if (choice === 1) {
         let orderChoice;
         do {
-            orderChoice = parseInt(console.log(
+            orderChoice = parseInt(prompt(
                 "=== Café Menu ===\n" +
                 "1. Coffee (₹50)\n" +
                 "2. Tea (₹30)\n" +
