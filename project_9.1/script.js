@@ -8,7 +8,6 @@ let password = "1234"
 
 
 do{
-
     console.log(`---------Good Stuff-----------`);
     console.log(`1. Place Order`);
     console.log(`2. View Bill`);

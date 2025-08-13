@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable With Function</title>
+    <style>
+        #btn{
+            padding: 18px 32px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 400px;
+            background-color: red;
+            color: black;
+            border: none;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">Click me...</button>
+
+
+    <script>
+        let showMessage = function() {
+            alert(`Hello World....`);
+        }
+        document.getElementById("btn").onclick = showMessage;
+
+    </script>
+</body>
+</html>
