@@ -47,9 +47,9 @@ if (dataUsed < 5) {
 }
 
 
-// Change Password Logic
+// Change Password Logic 
 
-let savedOldPassword = "admin123"; // Hardcoded old password
+let savedOldPassword = "admin123"; 
 
 let oldPass = prompt("Enter your old password:");
 let newPass = prompt("Enter your new password:");
