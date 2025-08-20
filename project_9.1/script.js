@@ -27,7 +27,7 @@ do{
                 console.log(`4. Pastry (₹100)`);
                 console.log(`0. Done Ordering`);
 
-                orderChoice = parseInt(prompt(`Enter Your Choice ; `));
+                orderChoice = parseInt(prompt(`Enter Your Choice : `));
 
                 if(orderChoice == 1){
                     subtotal += 50 
