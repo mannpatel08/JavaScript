@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initil-scale=1.0">
+  <title>Smart Image Slider</title>
+  <link rel="stylesheet" href="./css/">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: rgb(202, 93, 93);
+      margin: 0;
+      padding: 20px;
+    }
+    .slider-container {
+      max-width: 600px;
+      margin: auto;
+      background: rgb(180, 150, 150);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    p {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .buttons {
+      margin-top: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background: rgb(236, 102, 131);
+      color: white;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #message {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider-container">
+    <h2>Smart Image Slider</h2>
+    <img id="slider-img" src="" alt="Image Slider">
+    <p id="caption"></p>
+    <div class="buttons">
+      <button onclick="prevSlide()">⬅ Prev</button>
+      <button onclick="nextSlide()">Next ➡</button>
+    </div>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    // Array of image objects
+    const slides = [
+      { img: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fmumbai%2Fcomments%2F1n19th6%2Fparel_cha_maharaja_this_year%2F&psig=AOvVaw3pyVRE4Qtl73x8Z25iHwxg&ust=1756810815424000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCLD_vLa0t48DFQAAAAAdAAAAABAE", caption: "Parel Cha Maharaja 2025" },
+      { img: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deccanherald.com%2Findia%2Fmaharashtra%2Fphotos-lalbaugcha-raja-2025-first-look-sets-the-tone-for-ganeshotsav-in-mumbai-3695621&psig=AOvVaw05LvswkD7j7riY22fQG_4Y&ust=1756811133878000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCJCUrs61t48DFQAAAAAdAAAAABAE", caption: "LalBaug Cha Raja 2025" },
+      { img: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fyatrirailways.com%2Fchinchpokli-cha-chintamani-2025-mumbais-century-old-ganpati-pandal&psig=AOvVaw0Ra-Ue6d3vywdUJrmYN58I&ust=1756811188337000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCIDqyuq1t48DFQAAAAAdAAAAABAE", caption: "Chinchpokli Cha Chinatamani 2025" },
+      { img: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mid-day.com%2Fmumbai%2Fmumbai-news%2Fphoto%2Fin-photos-first-look-of-mumbaicha-raja-idol-unveiled-for-ganeshotsav-2024-102071&psig=AOvVaw3jJrwfWW8qYqisYzUUCS7J&ust=1756811271323000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOCQlZC2t48DFQAAAAAdAAAAABAE", caption: "Mumbai Cha Raja, Ganeshgali 2024" }
+  
+    ];
+
+    let currentIndex = 0;
+
+    // Function to display slide
+    function showSlide(index) {
+      const imgElement = document.getElementById("slider-img");
+      const captionElement = document.getElementById("caption");
+      const messageElement = document.getElementById("message");
+
+      if (index >= 0 && index < slides.length) {
+        imgElement.src = slides[index].img;
+        captionElement.textContent = slides[index].caption;
+        messageElement.textContent = "";
+      }
+    }
+
+    // Next button function
+    function nextSlide() {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        showSlide(currentIndex);
+      } else {
+        document.getElementById("message").textContent = "This is the last slide";
+      }
+    }
+
+    // Prev button function
+    function prevSlide() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        showSlide(currentIndex);
+      } else {
+        document.getElementById("message").textContent = "This is the first slide";
+      }
+    }
+
+    // Initialize first slide
+    showSlide(currentIndex);
+  </script>
+
+</body>
+</html>
