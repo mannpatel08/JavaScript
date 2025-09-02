@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initil-scale=1.0">
+  <title>Smart Image Slider</title>
+  <link rel="stylesheet" href="./css/">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: rgb(1, 0, 0);
+      margin: 0;
+      padding: 20px;
+    }
+    .slider-container {
+      max-width: 600px;
+      margin: auto;
+      background: rgb(255, 252, 252);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    p {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .buttons {
+      margin-top: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background: rgb(0, 0, 0);
+      color: white;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #message {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider-container">
+    <h2><u>Smart Image Slider</u></h2>
+    <img id="slider-img" src="" alt="Image Slider">
+    <p id="caption"></p>
+    <div class="buttons">
+      <button onclick="prevSlide()">⬅ Prev</button>
+      <button onclick="nextSlide()">Next ➡</button>
+    </div>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const slides = [
+  { img: "https://i.redd.it/parel-cha-maharaja-this-year-v0-nqmur317dilf1.jpg?width=3352&format=pjpg&auto=webp&s=ca4af58c4e86c2d2d040d5f84f097747650886ff", caption: "parel cha maharaja 2025" },
+  { img: "https://images.mid-day.com/images/images/2024/sep/MR-4-ready.jpg", caption: "Mumbai cha Raja, Ganeshgali 2024" },
+  { img: "https://preview.redd.it/chinchpokli-cha-chintamani-2025-v0-0jn78mi0yjjf1.png?auto=webp&s=1641cf232ee71efee3d349045c8d9e698e2f746c", caption: "Chinchpoklicha chintamani 2025" },
+  { img: "https://assets.gqindia.com/photos/66e020fc0ede7bc2809c9d7b/1:1/w_1080,h_1080,c_limit/X-iconic-Ganesh-Pandals-to-visit-in-Mumbai-during-the-10-day-festival_001.jpg", caption: "Lalbaug cha Raja"}
+   ];
+
+
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      const imgElement = document.getElementById("slider-img");
+      const captionElement = document.getElementById("caption");
+      const messageElement = document.getElementById("message");
+
+      if (index >= 0 && index < slides.length) {
+        imgElement.src = slides[index].img;
+        captionElement.textContent = slides[index].caption;
+        messageElement.textContent = "";
+      }
+    }
+
+    function nextSlide() {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        showSlide(currentIndex);
+      } else {
+        document.getElementById("message").textContent = "This is the last slide";
+      }
+    }
+
+    function prevSlide() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        showSlide(currentIndex);
+      } else {
+        document.getElementById("message").textContent = "This is the first slide";
+      }
+    }
+
+    showSlide(currentIndex);
+  </script>
+
+</body>
+</html>
