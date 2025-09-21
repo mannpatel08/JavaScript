@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countdown & Quotes App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+            background: #f9f9f9;
+            color: #333;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        #countdown, #quote {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #5a0ecb, #1f65d0);
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #modalContent {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 300px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Countdown to New Year</h2>
+    <div id="countdown">Loading...</div>
+    <button onclick="toggleTimer()">Start/Pause</button>
+
+    <h2>Quote Slider</h2>
+    <div id="quote">Loading...</div>
+    <button onclick="prevQuote()">Previous</button>
+    <button onclick="nextQuote()">Next</button>
+
+    <div id="modal">
+        <div id="modalContent">
+            <p>Welcome to Countdown & Quotes App Stay motivated!</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        let target = new Date();
+        target.setFullYear(target.getFullYear() + 1);
+        target.setMonth(0);
+        target.setDate(1);
+        target.setHours(0,0,0,0);
+
+        let running = false;
+        let timerId;
+
+        function updateCountdown() {
+            let now = new Date();
+            let diff = Math.floor((target - now) / 1000);
+            if(diff <= 0) {
+                document.getElementById('countdown').innerText = "Time’s up! The event has started!";
+                clearInterval(timerId);
+                running = false;
+                return;
+            }
+            let d = Math.floor(diff / 86400);
+            let h = Math.floor((diff % 86400) / 3600);
+            let m = Math.floor((diff % 3600) / 60);
+            let s = diff % 60;
+            document.getElementById('countdown').innerText = 
+                `${d} Days ${format(h)} Hours ${format(m)} Minutes ${format(s)} Seconds`;
+        }
+
+        function format(num) {
+            return num < 10 ? '0' + num : num;
+        }
+
+        function toggleTimer() {
+            if(running) {
+                clearInterval(timerId);
+                running = false;
+            } else {
+                updateCountdown();
+                timerId = setInterval(updateCountdown, 1000);
+                running = true;
+            }
+        }
+
+        updateCountdown();
+
+        const quotes = [
+            "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+            "Believe you can and you're halfway there.",
+            "Don't watch the clock; do what it does. Keep going.",
+            "The future depends on what you do today.",
+            "The harder you work for something, the greater you’ll feel when you achieve it."
+        ];
+        let currentQuote = 0;
+
+        function showQuote() {
+            document.getElementById('quote').innerText = quotes[currentQuote];
+        }
+
+        function nextQuote() {
+            currentQuote = (currentQuote + 1) % quotes.length;
+            showQuote();
+        }
+
+        function prevQuote() {
+            currentQuote = (currentQuote - 1 + quotes.length) % quotes.length;
+            showQuote();
+        }
+
+        setInterval(nextQuote, 4000);
+        showQuote();
+
+        function showModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        setTimeout(showModal, 5000);
+    </script>
+
+</body>
+</html>
