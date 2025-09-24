@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids Toys Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fef9f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #ff6f61;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .product h3 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .product p {
+      font-size: 1rem;
+      color: #444;
+    }
+
+    .product button {
+      background: #ff6f61;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .product button:hover {
+      background: #ff3b2e;
+    }
+
+    .cart {
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .cart h2 {
+      margin-bottom: 10px;
+    }
+
+    .cart ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cart ul li {
+      margin: 5px 0;
+      font-size: 0.95rem;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .cart button {
+      margin: 5px 0;
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .clear-btn {
+      background: #aaa;
+      color: white;
+    }
+
+    .clear-btn:hover {
+      background: #888;
+    }
+
+    .order-btn {
+      background: #28a745;
+      color: white;
+    }
+
+    .order-btn:hover {
+      background: #1e7e34;
+    }
+
+    .message {
+      margin-top: 10px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🧸 Kids Toys Store</h1>
+  </header>
+
+  <div class="container">
+    <div class="products" id="products">
+      <div class="product">
+        <img src="./img/img_1.png" alt="Labubu">
+        <h3>Labubu</h3>
+        <p>₹250</p>
+        <button onclick="addToCart('Labubu', 250)">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="./img/img_2.png" alt="Toy Car">
+        <h3>Toy Car</h3>
+        <p>₹1350</p>
+        <button onclick="addToCart('Toy Car', 1350)">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="https://cdn-icons-png.flaticon.com/512/2977/2977785.png" alt="Building Blocks">
+        <h3>Building Blocks</h3>
+        <p>₹600</p>
+        <button onclick="addToCart('Building Blocks', 600)">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="./img/img_3.png" alt="Teddy Bear">
+        <h3>Teddy Bear</h3>
+        <p>₹350</p>
+        <button onclick="addToCart('Teddy Bear', 350)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="cart">
+      <h2>🛒 Cart</h2>
+      <ul id="cart-items"></ul>
+      <p class="total">Total: ₹<span id="total">0</span></p>
+      <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+      <button class="order-btn" onclick="placeOrder()">Place Order</button>
+      <p class="message" id="message"></p>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
