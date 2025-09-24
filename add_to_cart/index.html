@@ -28,7 +28,7 @@
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
@@ -41,8 +41,8 @@
     }
 
     .product img {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       object-fit: contain;
     }
 
@@ -52,7 +52,8 @@
     }
 
     .product p {
-      font-size: 1rem;
+      margin: 4px 0;
+      font-size: 0.95rem;
       color: #444;
     }
 
@@ -63,10 +64,16 @@
       padding: 8px 12px;
       border-radius: 8px;
       cursor: pointer;
+      margin-top: 8px;
       transition: 0.3s;
     }
 
-    .product button:hover {
+    .product button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .product button:hover:enabled {
       background: #ff3b2e;
     }
 
@@ -126,7 +133,6 @@
     .message {
       margin-top: 10px;
       font-weight: bold;
-      color: green;
     }
   </style>
 </head>
@@ -137,35 +143,7 @@
   </header>
 
   <div class="container">
-    <div class="products" id="products">
-      <div class="product">
-        <img src="./img/img_1.png" alt="Labubu">
-        <h3>Labubu</h3>
-        <p>₹250</p>
-        <button onclick="addToCart('Labubu', 250)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="./img/img_2.png" alt="Toy Car">
-        <h3>Toy Car</h3>
-        <p>₹1350</p>
-        <button onclick="addToCart('Toy Car', 1350)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://cdn-icons-png.flaticon.com/512/2977/2977785.png" alt="Building Blocks">
-        <h3>Building Blocks</h3>
-        <p>₹600</p>
-        <button onclick="addToCart('Building Blocks', 600)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="./img/img_3.png" alt="Teddy Bear">
-        <h3>Teddy Bear</h3>
-        <p>₹350</p>
-        <button onclick="addToCart('Teddy Bear', 350)">Add to Cart</button>
-      </div>
-    </div>
+    <div class="products" id="products"></div>
 
     <div class="cart">
       <h2>🛒 Cart</h2>
